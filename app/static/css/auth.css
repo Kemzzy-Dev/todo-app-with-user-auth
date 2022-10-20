@@ -1,0 +1,31 @@
+/* LOGIN PAGE CSS */
+
+body{
+    background-color:  #fbe3e8;
+}
+
+#login{
+    background-color: #63d188;
+}
+
+#login:hover{
+    background-color: #1b7037;
+}
+
+#forgotpassword{
+    background-color: #bec4c0;
+}
+
+#forgotpassword:hover{
+    background-color: #949795;
+}
+
+
+/* REGISTER PAGE CSS */
+#register{
+    background-color: #63d188;
+}
+
+#register:hover{
+    background-color: #1b7037;
+}

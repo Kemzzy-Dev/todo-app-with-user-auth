@@ -1,0 +1,43 @@
+{% load static %}
+
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Todo</title>
+</head>
+<!-- done with the ui, next is to add good colors to make it beautiful -->
+<body style="background-image: url({% static 'images/gradienta-rKv4HduvzIE-unsplash.jpg' %});">
+    <div class="container">
+        <div class="row justify-content-center px-0">
+            <div class="col-lg-7 col-11 rounded bg-light shadow-lg">
+
+                <!-- form -->
+                <form action="{% url 'add' %}" method="post" class="d-flex">
+                    {% csrf_token %}
+                    {{ form.task }}
+                    <input type="submit" class="btn bg-primary ms-2 mt-2 rounded-2 text-light" value="Add Task">
+                </form>
+                {% if todos.count == 0 %}
+                    <p class="lead">No Task Available</p>
+                {% else %}
+                    {% for todo in todos %}
+                        <div class="d-flex align-items-center bg-purple p-1 mb-3">
+                            <a href="{% url 'update' todo.id %}" class="btn btn-success btn-sm rounded-1 shadow">Update</a>
+                            <a href="{% url 'delete' todo.id %}" class="btn btn-danger btn-sm rounded-1 shadow">Delete</a>
+                            <p class=" ms-3 fs-4 mb-0">{{ todo.task }}</p> 
+                        </div>
+                        <!-- add the classes to the todo.task and display it as_p -->
+                    {% endfor %}
+                {% endif%}
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

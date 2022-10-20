@@ -1,0 +1,13 @@
+body{
+    /* background-color:  #9975c2; */
+    background-image: url('images/gradienta-rKv4HduvzIE-unsplash.jpg');
+    background-repeat: no-repeat;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+.bg-purple{
+    background-color:#E0E0E0;
+}
