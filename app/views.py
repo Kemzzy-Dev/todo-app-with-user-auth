@@ -9,7 +9,7 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+# User authentication 
 @login_required(login_url='login')
 def SignOutUser(request):
     logout(request)
@@ -34,7 +34,6 @@ def SignInUser(request):
 
     return render(request, 'app/loginPage.html', {'form':form})
 
-@login_required(login_url='login')
 def registerUser(request):
     form = CreateUserForm()
 
@@ -50,6 +49,9 @@ def registerUser(request):
         
     return render(request, 'app/registerPage.html', {'form':form})
 
+
+# Adding, editing and deleting tasks from the todos
+# Redirects here to display the list of todos
 @login_required(login_url='login')
 def todoView(request):
     form = TodoForm()
@@ -62,25 +64,20 @@ def todoView(request):
 
 @login_required(login_url='login')
 def addTask(request):
-    try:
-        user = Todo.objects.get(user=request.user)
-        print(user)
-    except Todo.DoesNotExist:
-        user = Todo(user=request.user)
-
     if request.method == 'POST':
-        form = TodoForm(request.POST, instance=user)
+        form = TodoForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
             return redirect('view')
-        else:
-            return redirect(request, 'app/404.html')
     else:
-        form = TodoForm(instance=user)
+        form = TodoForm()
 
     return redirect('view')
 
+login_required(login_url='view')
 def deleteTask(request, pk):
     try:
         todo = Todo.objects.get(id=pk)
@@ -90,6 +87,7 @@ def deleteTask(request, pk):
     todo.delete()
     return redirect('view')
 
+login_required(login_url='view')
 def updateTask(request, pk):
     try:
         todo = Todo.objects.get(id=pk)
