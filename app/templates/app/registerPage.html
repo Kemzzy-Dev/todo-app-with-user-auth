@@ -26,6 +26,11 @@
                            
                             {{ form.password2 }}
 
+                            {% for message in messages %}
+                                    <p class="mt-2 text-danger">{{ message }}</p>
+                            {% endfor %}
+
+
                             <input type="submit" value="Register" id="register" class="btn btn-success form-control rounded-0 mt-4">
 
                             <p class="m-2">Have an account? <a href="{% url 'login' %}" class="text-decoration-none">Login Here</a></p>

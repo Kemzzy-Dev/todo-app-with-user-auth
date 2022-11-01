@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # User authentication 
@@ -30,7 +31,7 @@ def SignInUser(request):
                 login(request, user)
                 return redirect('view')
             else:
-                raise Http404("You are not authorized")
+                messages.error(request, 'Username or password is incorrect!')
 
     return render(request, 'app/loginPage.html', {'form':form})
 
@@ -45,7 +46,10 @@ def registerUser(request):
 
             if form.is_valid():
                 form.save()
+                messages.success(request, 'Account created successfully!')
                 return redirect('login')
+            else:
+                messages.error(request, 'Registration was unsuccessful!')
         
     return render(request, 'app/registerPage.html', {'form':form})
 

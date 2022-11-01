@@ -20,6 +20,9 @@ body{
     background-color: #949795;
 }
 
+#mt{
+    margin-top: 40px;
+}
 
 /* REGISTER PAGE CSS */
 #register{
