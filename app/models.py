@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
-
 class Todo(models.Model):
     task = models.CharField(max_length=20, blank=False)
     date = models.DateField(auto_now_add=True)

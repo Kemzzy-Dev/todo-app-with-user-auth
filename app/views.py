@@ -3,7 +3,6 @@ from .forms import TodoForm
 from .models import Todo
 
 from .forms import CreateUserForm, LoginUserForm
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
