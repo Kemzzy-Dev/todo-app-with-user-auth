@@ -1,4 +1,4 @@
-/* LOGIN PAGE CSS */
+LOGIN PAGE CSS
 
 body{
     background-color:  #fbe3e8;
@@ -20,9 +20,6 @@ body{
     background-color: #949795;
 }
 
-#mt{
-    margin-top: 40px;
-}
 
 /* REGISTER PAGE CSS */
 #register{
@@ -31,4 +28,8 @@ body{
 
 #register:hover{
     background-color: #1b7037;
+}
+
+.mecontainer{
+    margin-top: 70px;
 }

@@ -11,16 +11,16 @@
     <title>login page</title>
 </head>
 <body>
-    <section id="mt">
-        <div class="container">
-            <div class="row justify-content-center mx-5">
+    <section id="body">
+        <div class="container mt-5 pt-5 px-5 py-5">
+            <div class="row justify-content-center mx-2">
                 <div class="col-xl-5 col-lg-6 col-md-7 shadow-lg bg-white rounded-3">
                     <h2 class="text-center lead m-3">LOGIN</h2>
                     <form action="" method="post">
                         {% csrf_token %}
-                        <div class="text-center px-5">
+                        <div class="text-center px-2">
 
-                            <input type="text" name="username" class=" mb-3 form-control" placeholder="Username">
+                            <input type="text" name="email" class=" mb-3 form-control" placeholder="Email">
 
                             <input type="password" name="password" class="form-control" placeholder="Password">
                         
@@ -38,7 +38,7 @@
                         </div>
                     </form>
                     <div class="row">
-                        <a href="#" id="forgotpassword" class="text-white text-decoration-none p-2 text-center">Forgot Password?</a>
+                        <a href="{% url 'password_reset' %}" id="forgotpassword" class="text-white text-decoration-none p-2 text-center">Forgot Password?</a>
                     </div>
                 </div>
             </div>

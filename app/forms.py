@@ -1,7 +1,7 @@
 from django import forms
 from .models import Todo
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 
 class CreateUserForm(UserCreationForm):
     password1 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'mb-3 form-control', 'placeholder': 'Password'}))
@@ -15,7 +15,7 @@ class CreateUserForm(UserCreationForm):
         }
 
 class LoginUserForm(forms.Form):
-    username = forms.CharField(max_length=20)
+    email = forms.EmailField(max_length=20)
     password = forms.CharField(widget=forms.PasswordInput())
 
 
