@@ -18,7 +18,7 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
-import socket
+from django.conf import settings
 
 
 # User authentication 
@@ -131,15 +131,15 @@ def password_reset(request):
                     c = {
                     "email":user.email,
                     'domain':'127.0.0.1:8000',
-                    'site_name': 'Website',
                     "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                     "user": user,
                     'token': default_token_generator.make_token(user),
                     'protocol': 'http',
                     }
                     email = render_to_string(email_template_name, c)
+                    sender = settings.EMAIL_HOST_USER #host email is an environmental variable
                     try:
-                        send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)
+                        send_mail(subject, email, sender , [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect ("/password_reset/done/")

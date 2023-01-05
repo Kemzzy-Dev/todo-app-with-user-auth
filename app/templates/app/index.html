@@ -10,7 +10,8 @@
     <title>Todo</title>
 </head>
 <!-- done with the ui, next is to add good colors to make it beautiful -->
-<body style="background-image: url({% static 'images/gradienta-rKv4HduvzIE-unsplash.jpg' %});">
+<body>
+    {% block content %}
     <div class="container">
         <div class="row justify-content-center px-0">
 
@@ -46,7 +47,7 @@
     </div>
     <div class = "hidden" id = "error" style="display:none;"> Something went wrong! </div>
 
-    <script>
+    <!-- <script>
         document.getElementById('form'.onsubmit = function (e) {
             e.preventDefaut();
         fetch("{% url 'add' %}", {
@@ -72,6 +73,7 @@
                 });
 
         });
-    </script>
+    </script> -->
+    {% endblock %}
 </body>
 </html>
