@@ -74,6 +74,7 @@ def todoView(request):
         'form':form,
         'todos':todo
     }
+    print(todo)
     return render(request, 'app/index.html', context)
 
 @login_required(login_url='login')

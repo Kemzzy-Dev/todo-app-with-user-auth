@@ -24,7 +24,7 @@
                 <div class="align-items-right">
                     <a href="{% url 'signout' %}" class="fs-4">Logout</a>
                 </div>
-                <form id='form' class="d-flex">
+                <form id='form' method="POST" class="d-flex">
                     {% csrf_token %}
                     {{ form.task }}
                     <input type="submit" class="btn bg-primary ms-2 mt-2 rounded-2 text-light" value="Add Task">
@@ -52,7 +52,7 @@
             e.preventDefaut();
         fetch("{% url 'add' %}", {
                     method: 'POST',
-                    body: document.getElemeent.ById('id_task').value,
+                    body: document.getElement.ById('id_task').value,
                     headers: {
                                 'Content-Type': 'text/plain'
                             };
